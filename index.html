@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beautiful random quote generator with mood-based pastel gradient backgrounds">
+    <title>Quote Generator - Inspiration & Wisdom</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <main class="container">
+        <div class="quote-card">
+            <div class="quote-content">
+                <p id="quote-text" class="quote-text">Loading inspiration...</p>
+                <div class="quote-meta">
+                    <p id="quote-author" class="quote-author">—</p>
+                    <p id="quote-category" class="quote-category"></p>
+                </div>
+            </div>
+            <button id="new-quote-btn" class="new-quote-btn" aria-label="Get new quote">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="23 4 23 10 17 10"></polyline>
+                    <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
+                </svg>
+                New Quote
+            </button>
+        </div>
+    </main>
+    <script src="script.js"></script>
+</body>
+</html>
