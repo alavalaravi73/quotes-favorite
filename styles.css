@@ -25,27 +25,8 @@
 }
 
 /* ===== MOOD-BASED GRADIENTS ===== */
-/* Neutralize pastel gradients for a serious theme - force solid dark background */
+/* All gradient classes override to dark background for consistency */
 [class*="gradient-"] {
-    background: var(--bg-color) !important;
-}
-
-.gradient-creativity,
-.gradient-growth,
-.gradient-action,
-.gradient-design,
-.gradient-happiness,
-.gradient-fear,
-.gradient-alienated,
-.gradient-escape,
-.gradient-reading,
-.gradient-create,
-.gradient-authenticity,
-.gradient-perspective,
-.gradient-travel,
-.gradient-discipline,
-.gradient-resourcefulness,
-.gradient-default {
     background: var(--bg-color) !important;
 }
 

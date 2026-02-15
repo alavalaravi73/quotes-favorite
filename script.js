@@ -2,25 +2,6 @@
 let quotes = [];
 let currentQuoteIndex = -1;
 
-// ===== MOOD TO GRADIENT MAPPING =====
-const moodGradients = {
-    'creativity': 'gradient-creativity',
-    'growth': 'gradient-growth',
-    'action': 'gradient-action',
-    'design': 'gradient-design',
-    'happiness': 'gradient-happiness',
-    'fear': 'gradient-fear',
-    'alienated': 'gradient-alienated',
-    'escape': 'gradient-escape',
-    'reading': 'gradient-reading',
-    'create': 'gradient-create',
-    'authenticity': 'gradient-authenticity',
-    'perspective': 'gradient-perspective',
-    'travel': 'gradient-travel',
-    'discipline': 'gradient-discipline',
-    'resourcefulness': 'gradient-resourcefulness'
-};
-
 // ===== QUOTE LOADING =====
 async function loadQuotes() {
     try {
@@ -55,9 +36,6 @@ function displayRandomQuote() {
         // Update content
         updateQuoteContent(quote);
 
-        // Update background gradient
-        updateBackgroundGradient(quote.category);
-
         // Fade in new quote
         fadeInQuote();
     });
@@ -66,39 +44,21 @@ function displayRandomQuote() {
 function updateQuoteContent(quote) {
     const quoteText = document.getElementById('quote-text');
     const quoteAuthor = document.getElementById('quote-author');
-    const quoteCategory = document.getElementById('quote-category');
 
     // Remove quote marks from the text since CSS adds them
     let cleanText = quote.text.replace(/^["']+|["']+$/g, '');
 
     quoteText.textContent = cleanText;
     quoteAuthor.textContent = `— ${quote.author}`;
-    quoteCategory.textContent = quote.category;
-}
-
-function updateBackgroundGradient(category) {
-    const body = document.body;
-    const categoryLower = category.toLowerCase().trim();
-
-    // Remove all gradient classes
-    Object.values(moodGradients).forEach(gradientClass => {
-        body.classList.remove(gradientClass);
-    });
-
-    // Add the appropriate gradient class
-    const gradientClass = moodGradients[categoryLower] || 'gradient-default';
-    body.classList.add(gradientClass);
 }
 
 // ===== ANIMATIONS =====
 function fadeOutQuote(callback) {
     const quoteText = document.getElementById('quote-text');
     const quoteAuthor = document.getElementById('quote-author');
-    const quoteCategory = document.getElementById('quote-category');
 
     quoteText.classList.add('fade-out');
     quoteAuthor.classList.add('fade-out');
-    quoteCategory.classList.add('fade-out');
 
     setTimeout(callback, 300);
 }
@@ -106,12 +66,10 @@ function fadeOutQuote(callback) {
 function fadeInQuote() {
     const quoteText = document.getElementById('quote-text');
     const quoteAuthor = document.getElementById('quote-author');
-    const quoteCategory = document.getElementById('quote-category');
 
     // Remove fade-out class
     quoteText.classList.remove('fade-out');
     quoteAuthor.classList.remove('fade-out');
-    quoteCategory.classList.remove('fade-out');
 
     // Trigger reflow
     void quoteText.offsetWidth;
@@ -119,19 +77,14 @@ function fadeInQuote() {
     // Add fade-in class
     quoteText.classList.add('fade-in');
     quoteAuthor.classList.add('fade-in');
-    quoteCategory.classList.add('fade-in');
 }
 
 function displayErrorQuote() {
     const quoteText = document.getElementById('quote-text');
     const quoteAuthor = document.getElementById('quote-author');
-    const quoteCategory = document.getElementById('quote-category');
 
     quoteText.textContent = 'Unable to load quotes. Please check that quotes.json is in the same directory.';
     quoteAuthor.textContent = '—';
-    quoteCategory.textContent = '';
-
-    document.body.classList.add('gradient-default');
 }
 
 // ===== EVENT LISTENERS =====
